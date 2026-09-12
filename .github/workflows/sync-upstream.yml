@@ -24,6 +24,10 @@ jobs:
         with:
           fetch-depth: 0
           ref: master
+          # GITHUB_TOKEN cannot push changes to .github/workflows. Create a
+          # repository secret named UPSTREAM_SYNC_TOKEN with repo/workflow
+          # permission and use it for the sync job.
+          token: ${{ secrets.UPSTREAM_SYNC_TOKEN }}
 
       - name: Merge upstream master
         env:
